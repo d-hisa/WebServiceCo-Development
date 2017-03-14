@@ -4,17 +4,17 @@
 ## 使い方
 wikiの **mariadbについて** を読み、既にmariadbの初期設定を完了している前提。
 ### リポジトリ準備準備
-1. リポジトリをクローンする
+1. リポジトリをクローンする  
 `git clone https://github.com/d-hisa/WebServiceCo-Development.git`
-1. ディレクトリ移動
+1. ディレクトリ移動  
 `cd WebServiceCo-Development/yasudample/app`
-1. GoogleDriveから`secret_settings.py`をDLし、`manage.py`と同じディレクトリに配置
+1. GoogleDriveから`secret_settings.py`をDLし、`manage.py`と同じディレクトリに配置  
 `GoogleDrive/06.開発用ファイル/secret_settings.py`
 1. `secret_settings.py`の中身を必要に応じて書き換え  
 特にDB_PW。これは自分の環境でmariadbのrootユーザに指定したパスワードを書く。
 
 ### mariadbセッティング
-1. maridbを起動
+#### maridbを起動
 ```bash
 [Mac]
 $ mysql.server start
@@ -23,14 +23,14 @@ $ mysql.server start
 [CentOS]
 $ systemctl start mysqld
 ```
-1. mariadbへログイン
+#### mariadbへログイン
 ```bash
 [Mac / CentOS]
 $ mysql -uroot
 [Windows]
 ???
 ```
-1. DBを作成
+#### DBを作成
 ```sql
 > create database enzemi
 ```
