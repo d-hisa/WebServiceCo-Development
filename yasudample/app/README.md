@@ -36,6 +36,9 @@ $ mysql -uroot
 ```
 
 ### sampleセッティング
+> **注意**  
+> 仮想環境のactivateを忘れないこと。
+
 下記コマンドを実行
 ```bash
 $ python manage.py migrate
