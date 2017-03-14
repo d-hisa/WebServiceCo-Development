@@ -1,0 +1,15 @@
+{% extends 'enzemi/layout.html' %}
+
+{% block content %}
+
+設定画面
+
+<form action="{{form_action}}" method="POST">
+    {% csrf_token %}
+    {{ form.employee_id.errors }}{{ form.employee_id.label_tag }}{{ form.employee_id }}
+    {{ form.pc_mail_address.errors }}{{ form.pc_mail_address.label_tag }}{{ form.pc_mail_address }}
+    {{ form.mobile_mail_address.errors }}{{ form.mobile_mail_address.label_tag }}{{ form.mobile_mail_address }}
+    <input type="submit" value="Submit" />
+</form>
+
+{% endblock %}
