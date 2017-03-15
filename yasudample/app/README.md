@@ -50,6 +50,13 @@ $ python manage.py loaddata fixtures/default.json
 $ python manage.py runserver
 ```
 
+### model変更後のmigrate
+下記コマンドを実行
+```bash
+$ python manage.py makemigrations
+$ python manage.py migrate
+```
+
 ## 現状
 - [朝夜メール画面]
 	* 新規登録とタスクの表示（生JSON）
