@@ -3,6 +3,93 @@
 サンプルというか作るアプリの骨組みです。
 ## 使い方
 wikiの **mariadbについて** を読み、既にmariadbの初期設定を完了している前提。
+## 構成
+```
+app
+│  manage.py
+│  
+├─app
+│  │  settings.py: 設定
+│  │  urls.py: ルーティング
+│  │  wsgi.py: 本番環境で動かすときはこっち
+│  │  __init__.py
+│  │  
+│  └─__pycache__
+│          
+├─enzemi: アプリケーション
+│  │  admin.py: adminサイト用設定
+│  │  apps.py
+│  │  forms.py: formの設定
+│  │  tests.py
+│  │  urls.py: アプリケーションのルーティング
+│  │  __init__.py
+│  │  
+│  ├─migrations: マイグレーションファイルが入る
+│  │  │  ・・・
+│  │  │  
+│  │  └─__pycache__
+│  │          ・・・
+│  │          
+│  ├─models: モデル置き場（テーブルとファイルを1:1にしてみた）
+│  │  │  employee_list.py
+│  │  │  goal_master.py
+│  │  │  holiday_master.py
+│  │  │  major_classification_master.py
+│  │  │  morning_comment_master.py
+│  │  │  morning_task_master.py
+│  │  │  night_comment_master.py
+│  │  │  night_task_master.py
+│  │  │  review_master.py
+│  │  │  small_classification_master.py
+│  │  │  team_inter.py
+│  │  │  team_list.py
+│  │  │  __init__.py
+│  │  │  
+│  │  └─__pycache__
+│  │          ・・・
+│  │          
+│  ├─static: 静的ファイル置き場
+│  │  ├─css
+│  │  ├─img
+│  │  ├─js
+│  │  └─plugins
+│  │              
+│  ├─templates: テンプレート置き場
+│  │  ├─enzemi
+│  │  │      head.html: ヘッダ
+│  │  │      layout.html: レイアウト
+│  │  │      login.html: ログインページ
+│  │  │      select_date.html: 日付選択
+│  │  │      settings.html: 個人設定
+│  │  │      
+│  │  ├─individual: 個人分析
+│  │  │      analysis.html
+│  │  │      
+│  │  ├─task: タスク
+│  │  │      edit.html: タスク編集
+│  │  │      new.html: タスク新規作成
+│  │  │      show.html: タスク確認
+│  │  │      
+│  │  └─team: チーム分析
+│  │          analysis.html
+│  │          
+│  ├─views: コントローラ置き場
+│  │  │  individual.py
+│  │  │  task.py
+│  │  │  team.py
+│  │  │  views.py
+│  │  │  __init__.py
+│  │  │  
+│  │  └─__pycache__
+│  │          ・・・
+│  │          
+│  └─__pycache__
+│             ・・・
+│          
+└─fixtures
+        default.json: テスト用データ
+ ```     
+
 ### リポジトリ準備準備
 1. リポジトリをクローンする  
 `git clone https://github.com/d-hisa/WebServiceCo-Development.git`
