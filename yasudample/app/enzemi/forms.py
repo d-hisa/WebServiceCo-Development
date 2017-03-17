@@ -11,15 +11,15 @@ class EmployeeListForm(forms.ModelForm):
         fields = [
             'employee_id',
             'email',
-            'pc_mail_address',
-            'mobile_mail_address',
+            'pc_address',
+            'mobile_address',
             'password',
-            'employee_name',
+            'name',
             'position',
             'control_level',
             'work_start_time',
             'work_finish_time',
-            'mail_detination',
+            'detination',
             'work_day',
         ]
 
