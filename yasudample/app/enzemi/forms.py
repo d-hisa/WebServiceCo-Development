@@ -26,11 +26,12 @@ class EmployeeListForm(forms.ModelForm):
     """
     表示の設定をしたい場合は以下に記入
     """
+    name = forms.CharField(required=False, label="名前", widget=forms.TextInput(attrs={'class': 'form-control input-xm'}))
     email = forms.CharField(required=False, label="メール", widget=forms.TextInput(attrs={'class': 'form-control input-xm'}))
     password = forms.CharField(required=False, label="パスワード", widget=forms.TextInput(attrs={'class': 'form-control input-xm'}))
-    employee_id = forms.DecimalField(required=False, label="ID", widget=forms.TextInput(attrs={'class': 'form-control input-xm'}))
-    pc_mail_address = forms.CharField(required=False, label="メールアドレス（PC）", widget=forms.TextInput(attrs={'class': 'form-control input-xm'}))
-    mobile_mail_address = forms.CharField(required=False, label="メールアドレス（携帯）", widget=forms.TextInput(attrs={'class': 'form-control input-xm'}))
+    employee_id = forms.DecimalField(required=False, label="社員ID", widget=forms.TextInput(attrs={'class': 'form-control input-xm'}))
+    pc_mail_address = forms.EmailField(required=False, label="メールアドレス（PC）", widget=forms.TextInput(attrs={'class': 'form-control input-xm'}))
+    mobile_mail_address = forms.EmailField(required=False, label="メールアドレス（携帯）", widget=forms.TextInput(attrs={'class': 'form-control input-xm'}))
 
 class MorningTaskMasterForm(forms.ModelForm):
     class Meta:
