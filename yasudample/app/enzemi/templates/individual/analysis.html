@@ -1,7 +1,183 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+<style>
+  * { box-sizing: border-box }
+  li { list-style-type: none }
+  li:before {
+    content: "";
+    display: inline-block;
+    height: 13px;
+    width: 13px;
+    margin-right: 5px;
+    border-radius: 3px;
+  }
+  li.w-power:before {
+    background: rgba(214,133,176,0.7);
+  }
+  li.m-power:before {
+    background: rgba(127,194,239,0.7);
+  }
+  li.kikaku:before {
+  background: #9acce3;
+  }
+  li.kaihatsu:before {
+  background: #70b062;
+  }
+  li.unnyou:before {
+  background: #dbdf19;
+  }
+  li.zatsumu:before {
+  background: #a979ad;
+  }
+  li.kinnmu:before {
+    background: rgba(221,156,180,0.6);
+  }
+  li.zanngyou:before {
+    background: rgba(143,183,221,0.6);
+  }
+</style>
 {% extends 'enzemi/layout.html' %}
 
 {% block content %}
 
-個人分析
+
+     <div style="padding:0 5%; margin-bottom:100px; text-align:center; ">
+        <h1 style="font-size:300%;">予定/実績の再分析</h1>
+        <div style="width:70%;float: left">
+          <canvas id="bar-chart"></canvas>
+        </div>
+        <div style="width: 30%;float: right;padding: 50px">
+          <ul style="width: 150px;padding: 20px;box-shadow: 1px 1px 4px 1px #ccc">
+            <li class="w-power">予定</li>
+            <li class="m-power">実績</li>
+          </ul>
+        </div>
+        <div style="clear:both;"></div>
+      </div>
+      <div style="padding:0 5%; text-align:center;margin-bottom:100px; ">
+        <h1 style="font-size:300%;">業務配分分析</h1>
+        <div style="width: 70%;float: left">
+          <canvas id="pie-chart"></canvas>
+        </div>
+        <div style="width: 30%;float: right;padding: 50px">
+          <ul style="width: 200px;padding: 20px;box-shadow: 1px 1px 4px 1px #ccc">
+            <li class="kikaku">企画提案</li>
+            <li class="kaihatsu">開発</li>
+            <li class="unnyou">運用</li>
+            <li class="zatsumu">雑務</li>
+          </ul>
+        </div>
+        <div style="clear:both;"></div>
+      </div>
+      <div style="padding:0 5%; text-align:center;">
+        <h1 style="font-size:300%;">勤務時間/残業時間推移</h1>
+        <div style="width: 70%;float: left">
+          <canvas id="bow-chart"></canvas>
+        </div>
+        <div style="width: 30%;float: right;padding: 50px">
+          <ul style="width: 200px;padding: 20px;box-shadow: 1px 1px 4px 1px #ccc">
+            <li class="kinnmu">勤務時間</li>
+            <li class="zanngyou">残業時間 </li>
+          </ul>
+        </div>
+        <div style="clear:both;"></div>
+      </div>
+
+<script>
+ var barChartData = {
+   labels : ["企画提案","開発","運用","雑務"],
+   datasets : [
+     {
+       fillColor : /*"#d685b0"*/"rgba(214,133,176,0.7)",
+       strokeColor : /*"#d685b0"*/"rgba(214,133,176,0.7)",
+       highlightFill: /*"#eebdcb"*/"rgba(238,189,203,0.7)",
+       highlightStroke: /*"#eebdcb"*/"rgba(238,189,203,0.7)",
+       data : [12,20,7,3]
+     },
+      {
+        fillColor : /*"#7fc2ef"*/"rgba(127,194,239,0.7)",
+        strokeColor : /*"#7fc2ef"*/"rgba(127,194,239,0.7)",
+        highlightFill : /*"#a5d1f4"*/"rgba(165,209,244,0.7)",
+        highlightStroke : /*"#a5d1f4"*/"rgba(165,209,244,0.7)",
+        data : [15,18,10,10]
+      }
+   ]
+ }
+
+ var pieData = [
+   {
+     value: 37,
+     color:"#9acce3",
+     highlight: "#aadbf2",
+     label: "企画提案"
+   },
+   {
+     value: 30,
+     color: "#70b062",
+     highlight: "#7fc170",
+     label: "開発"
+   },
+   {
+     value: 20,
+     color: "#dbdf19",
+     highlight: "#ecef23",
+     label: "運用"
+   },
+   {
+     value: 10,
+     color: "#a979ad",
+     highlight: "#bb8ebf",
+     label: "雑務"
+   }
+
+ ];
+
+var lineChartData = {
+    labels : ["3/6","3/7","3/8","3/9","3/10"],
+    datasets : [
+      {
+        label: "勤務時間",
+        fillColor : /*"#f2dae8"*/"rgba(242,218,232,0.6)",
+        strokeColor : /*"#dd9cb4"*/"rgba(221,156,180,0.6)",
+        pointColor : /*"#dd9cb4"*/"rgba(221,156,180,0.6)",
+        pointStrokeColor : "#fff",
+        pointHighlightFill : "#fff",
+        pointHighlightStroke : /*"#dd9cb4"*/"rgba(221,156,180,0.6)",
+        data : [8,8,8,7,8]
+      },
+      {
+        label: "残業時間",
+        fillColor : /*"#afd0ef"*/"rgba(175,208,239,0.6)",
+        strokeColor : /*"#fb7dd8"*/"rgba(143,183,221,0.6)",
+        pointColor : /*"#8fb7dd"*/"rgba(143,183,221,0.6)",
+        pointStrokeColor : "#fff",
+        pointHighlightFill : "#fff",
+        pointHighlightStroke : /*"#8fb7dd"*/"rgba(143,183,221,0.6)",
+        data : [3,4,2,0,5]
+      }
+    ]
+
+  }
+
+ window.onload = function(){
+   var ctx = document.getElementById("bar-chart").getContext("2d");
+   window.myBar = new Chart(ctx).Bar(barChartData, {
+	scaleFontSize: 22,
+	responsive : true
+   });
+
+   var ctx2 = document.getElementById("pie-chart").getContext("2d");
+   window.myPie = new Chart(ctx2).Pie(pieData,{
+	scaleFontSize: 22,
+	responsive : true
+   });
+   var ctx3 = document.getElementById("bow-chart").getContext("2d");
+   window.myLine = new Chart(ctx3).Line(lineChartData, {
+	scaleFontSize: 22,
+	responsive : true
+   });
+ }
+</script>
+
+
 
 {% endblock %}

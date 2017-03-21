@@ -1,11 +1,173 @@
 {% extends 'enzemi/layout.html' %}
 
 {% block content %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Datepicker - Icon trigger</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker({
+      showOn: "button",
+      buttonImage: "images/calendar.gif",
+      buttonImageOnly: true,
+      buttonText: "Select date"
+    });
+  } );
+  </script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/i18n/jquery.ui.datepicker-ja.js"></script>
 
-タスク一覧
+</head>
+<body>
+ 
+<p>Date: <input type="text" id="datepicker"></p>
+ 
+ 
+</body>
+</html>
 
-<p>{{morning_task}}</p>
 
+<!--<p>{{morning_task}}</p> -->
+<br>
+<b>　朝メール　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　夜メール</b>
+<table class="type01">
+	<tr>
+                <th scope="col">時間</th>
+                <th scope="col">分類</th>
+                <th scope="col">タスク名</th>
+        </tr>
+	<tr>
+		<td>09:30-10:30</td>
+		<td>ルーティン</td>
+		<td>掃除</td>
+	</tr>
+	<tr>
+                <td>10:30-11:30</td>
+                <td>会議</td>
+                <td>ブランド戦略</td>
+        </tr>
+	<tr>
+                <td>13:00-14:00</td>
+                <td>資料作成</td>
+                <td>面接準備</td>
+        </tr>
+	<tr>
+                <td>15:00-15:30</td>
+                <td>面接</td>
+                <td>中途採用面接</td>
+        </tr>
+        <tr>
+                <td>16:00-17:00</td>
+                <td>ルーティン</td>
+                <td>定例</td>
+        </tr>
+        <tr>
+                <td>17:30-18:00</td>
+                <td>ルーティン</td>
+                <td>メール確認</td>
+        </tr>
+</table>
+<table class="type01 type02">
+        <tr>
+                <th scope="col">時間</th>
+                <th scope="col">分類</th>
+                <th scope="col">タスク名</th>
+        </tr>
+        <tr>
+                <td>09:30-10:30</td>
+                <td>ルーティン</td>
+                <td>掃除</td>
+        </tr>
+        <tr>
+                <td>10:30-11:30</td>
+                <td>会議</td>
+                <td>ブランド戦略</td>
+        </tr>
+        <tr>
+                <td>13:00-14:20</td>
+                <td>資料作成</td>
+                <td>面接準備</td>
+        </tr>
+        <tr>
+                <td>15:00-15:25</td>
+                <td>面接</td>
+                <td>中途採用面接</td>
+        </tr>
+        <tr>
+                <td>16:00-16:50</td>
+                <td>緊急</td>
+                <td>障害対応</td>
+        </tr>
+        <tr>
+                <td>17:30-18:00</td>
+                <td>ルーティン</td>
+                <td>メール確認</td>
+        </tr>
+</table>
+<style>
+table.type01{
+	border-collapse: collapse;
+	text-align: left;
+	line-height: 1.5;
+}
+table.type01 td {
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	border: 1px solid #ccc;
+}
+table.type01 td {
+	padding: 10px;
+	vertical-align: top;
+	border: 1px solid #ccc;
+}
+.type01 th:nth-child(1){
+        background: #ff8080;
+        width: 110px;
+}
+.type01 th:nth-child(2){
+	background: #ff8080;
+	width: 150px;
+}
+.type01 th:nth-child(3){
+        background: #ff8080;
+        width: 230px;
+}
+.type02 th:nth-child(1){
+        background: #1E90FF;
+        width: 110px;
+}
+.type02 th:nth-child(2){
+        background: #1E90FF;
+        width: 150px;
+}
+.type02 th:nth-child(3){
+        background: #1E90FF;
+        width: 230px;
+}
+.type01 tr:hover {
+        background: #ff8080;
+}
+.type02 tr:hover {
+        background: #1E90FF;
+}
+table.type01 {
+display:table-cell;
+}
+table.type02 {
+display:table-cell;
+}
+</style>
+<!--<p>{{morning_task}}</p> -->
+<br>
+<br>
 <a href ="{% url 'task_new' %}">新規登録</a>
+
 
 {% endblock %}
