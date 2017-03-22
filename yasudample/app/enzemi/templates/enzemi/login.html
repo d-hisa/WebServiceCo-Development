@@ -1,1 +1,60 @@
-<!-- ログイン画面 -->
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include 'enzemi/head.html' %}
+    </head>
+
+    <body class="hold-transition login-page">
+        <script type="text/javascript">
+            $(function() {
+                {% if messages %}
+                    {% for message in messages %}
+                        noty({
+                          timeout: 1500,
+                          text: '{{message}}'
+                        });
+                    {% endfor %}
+                {% endif %}
+            });
+            $(function () {
+                $('input').iCheck({
+                    checkboxClass: 'icheckbox_square-blue',
+                    radioClass: 'iradio_square-blue',
+                    increaseArea: '20%' // optional
+                });
+            });
+        </script>
+		{% load staticfiles%}
+        <div class="login-box">
+            <div class="login-logo">
+				<img src="{% static 'img/pokii_green_logo.png' %}" height="120px" width="auto" style="margin-left: auto;margin-right: auto"/>
+            </div>
+            <!-- /.login-logo -->
+            <div class="login-box-body">
+                <p class="login-box-msg">Sign in to start your session</p>
+                <form action="settings" method="post">
+                    {% csrf_token %}
+                    <div class="form-group has-feedback">
+                        <label for="id_username">User name</label>
+						<input type="text" value="hoge@hoge.com" />
+                        {{ form.username }}
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label for="id_password">Password</label>
+                        {{ form.password }}
+                    </div>
+                    <div class="row">
+                        <!-- /.col -->
+                        <div class="col-xs-4">
+                            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </form>
+                <!-- /.social-auth-links -->
+            </div>
+            <!-- /.login-box-body -->
+        </div>
+        <!-- /.login-box -->
+    </body>
+</html>

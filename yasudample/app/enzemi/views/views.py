@@ -7,7 +7,8 @@ from enzemi.forms import EmployeeListForm
 
 def index(request):
     return render(
-        request, 'task/edit.html',
+        #request, 'task/edit.html',
+		request, 'enzemi/login.html',
     )
 
 def settings(request):

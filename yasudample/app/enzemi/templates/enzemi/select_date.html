@@ -1,1 +1,21 @@
-カレンダー
+<div class="col-md-12">
+	<div class="box box-solid">
+		<div class="box-body no-padding">
+			<div id="calendar-inline"></div>
+			<style>
+			.datepicker-inline {
+				width: 150px;
+				font-size: 10px;
+			}
+			</style>
+			<script>
+			$('#calendar-inline').datepicker({
+				todayHighlight: true,
+				daysOfWeekHighlighted: "0,6",
+				format:'yyyy/mm/dd',
+				language: 'ja'
+			});
+			</script>
+		</div>
+	</div>
+</div>
